@@ -4,7 +4,9 @@ const config = require('config');
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use('/', express.static(`${__dirname}/client/build`));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
 
 var apigClientFactory = require('aws-api-gateway-client').default;
 
