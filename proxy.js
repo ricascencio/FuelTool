@@ -12,10 +12,7 @@ const apigClientFactoryConfig = {
   }
 var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
 
-exports.getCharges = async() => {
-  console.log('getCharges function');
-  let response = null;
-
+exports.getLastCharges = function(callback){
   var params = {};
   // Template syntax follows url-template https://www.npmjs.com/package/url-template
   var pathTemplate = '/dev/charges/'
@@ -25,19 +22,23 @@ exports.getCharges = async() => {
       headers: {},
       queryParams: {}
   };
+
+  let now = new Date();
   var body = {
-      //This is where you define the body of the request
+      dateFrom: now.getFullYear() + '-' + (now.getMonth() - 2),
+      dateTo: now.getFullYear() + '-' + (now.getMonth())
   };
 
-  return await apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
+  apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
   .then(function(result){
-   console.log('result', result.data);
-      return result;
+    console.log('result', result.data);
+    callback(data);
+   //res.send({express: result.data});
+      //return result;
       //This is where you would put a success callback
   }).catch( function(result){
    console.log('CATCH', result);
       //This is where you would put an error callback
       return result;
   });
-  return false;
-};
+}
