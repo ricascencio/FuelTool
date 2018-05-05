@@ -16,7 +16,7 @@ exports.getLastCharges = function(callback){
   var params = {};
   // Template syntax follows url-template https://www.npmjs.com/package/url-template
   var pathTemplate = '/dev/charges/'
-  var method = 'GET';
+  var method = 'POST';
   var additionalParams = {
       //If there are any unmodeled query parameters or headers that need to be sent with the request you can add them here
       headers: {},
@@ -31,8 +31,8 @@ exports.getLastCharges = function(callback){
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
   .then(function(result){
-    console.log('result', result.data);
-    callback(data);
+    console.log('result', result);
+    callback(result);
    //res.send({express: result.data});
       //return result;
       //This is where you would put a success callback
