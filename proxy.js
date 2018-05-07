@@ -10,6 +10,8 @@ const apigClientFactoryConfig = {
     region: process.env.REGION || config.get('REGION'),
     apiKey : process.env.API_KEY || config.get('API_KEY'),
   }
+
+const month = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
 
 exports.getLastCharges = function(callback){
@@ -24,18 +26,17 @@ exports.getLastCharges = function(callback){
   };
 
   let now = new Date();
+  let dateFrom = new Date();
+  dateFrom.setMonth(dateFrom.getMonth() -2);
   var body = {
-      dateFrom: now.getFullYear() + '-' + (now.getMonth() - 2),
-      dateTo: now.getFullYear() + '-' + (now.getMonth())
+      dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
+      dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
   };
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
   .then(function(result){
-    console.log('result', result);
-    callback(result);
-   //res.send({express: result.data});
-      //return result;
-      //This is where you would put a success callback
+    console.log('resultTTT', result.data);
+    callback(result.data);
   }).catch( function(result){
    console.log('CATCH', result);
       //This is where you would put an error callback

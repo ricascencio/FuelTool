@@ -22,6 +22,34 @@
   font-size: large;
 }
 
+.Actions {
+    margin: 50px auto;
+    width: 320px;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+  }
+
+.ActionItem {
+    margin: 7px;
+    border-radius: 5px;
+    border: 2px solid #0bc934;
+    box-shadow: 0 4px 6px #ccc;
+    padding: 10px;
+    width:75px;
+    height: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+
+  }
+
+  div span{
+    color: #DF612B;
+  }
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

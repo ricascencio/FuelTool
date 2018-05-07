@@ -9,6 +9,9 @@ import './App.css';
 
 class App extends Component {
 
+  state = {
+    action: "LogChargeForm"
+  }
 
   render() {
     return (
@@ -17,9 +20,12 @@ class App extends Component {
           <h1 className="App-title">Fuel Tool</h1>
         </header>
         <div>
-          <Actions/>
-          <LogChargeForm/>
-          <Charges/>
+          <div className="Actions">
+            <div className="ActionItem"><span>Log</span></div>
+            <div className="ActionItem"><span>Charges</span></div>
+          </div>
+          <LogChargeForm visible={this.state.action === "LogChargeForm"}/>
+          <Charges visible={this.state.action == "Charges"}/>
         </div>
       </div>
     );

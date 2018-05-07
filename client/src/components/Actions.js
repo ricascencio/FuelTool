@@ -2,6 +2,8 @@ import React from 'react';
 import Radium from 'radium';
 import './Actions.css'
 
+
+
 const actions = (props) =>{
   return <div className="Actions">
     <div className="ActionItem"><span>Log</span></div>
