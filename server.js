@@ -9,10 +9,19 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.get('/api/charges', (req, res) => {
+app.get('/charge/all', (req, res) => {
   proxy.getLastCharges(function(charges) {
     res.send(charges);
     console.log('The promise was fulfilled with charges!');
+  }, function(err) {
+        console.error('The promise was rejected', err, err.stack);
+  });
+});
+
+app.get('/charge/add', (req, res) => {
+  proxy.saveFuelCharge(function(charge, req.params) {
+    res.send(charge);
+    console.log('The promise was fulfilled with charge!');
   }, function(err) {
         console.error('The promise was rejected', err, err.stack);
   });

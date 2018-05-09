@@ -43,3 +43,33 @@ exports.getLastCharges = function(callback){
       return result;
   });
 }
+
+exports.saveFuelCharge = function(callback, params){
+  var params = {};
+  // Template syntax follows url-template https://www.npmjs.com/package/url-template
+  var pathTemplate = '/dev/saveFuelCharge/'
+  var method = 'POST';
+  var additionalParams = {
+      //If there are any unmodeled query parameters or headers that need to be sent with the request you can add them here
+      headers: {},
+      queryParams: {}
+  };
+
+  let now = new Date();
+  let dateCharge = 
+  
+  var body = {
+      dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
+      dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
+  };
+
+  apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
+  .then(function(result){
+    console.log('resultTTT', result.data);
+    callback(result.data);
+  }).catch( function(result){
+   console.log('CATCH', result);
+      //This is where you would put an error callback
+      return result;
+  });
+}
