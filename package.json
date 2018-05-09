@@ -5,10 +5,12 @@
   "dependencies": {
     "aws-api-gateway-client": "^0.2.12",
     "config": "^1.30.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "npm": "^6.0.0"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.17.3"
   },
   "scripts": {
     "client": "cd client && npm start",

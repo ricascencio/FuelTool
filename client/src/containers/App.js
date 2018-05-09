@@ -24,8 +24,7 @@ class App extends Component {
             <div className="ActionItem"><span>Log</span></div>
             <div className="ActionItem"><span>Charges</span></div>
           </div>
-          <LogChargeForm visible={this.state.action === "LogChargeForm"}/>
-          <Charges visible={this.state.action == "Charges"}/>
+          
         </div>
       </div>
     );

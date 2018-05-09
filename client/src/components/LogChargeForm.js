@@ -25,10 +25,8 @@ class LogChargeForm extends Component {
     console.log('lts', this.state.lts);
   }
 
-  render (props) {
-    if(props.visible != "LogChargeForm")
-      return ""
-    else 
+  render () {
+    
     return (
       <form onSubmit={this.submitHandler}>
         <div>
