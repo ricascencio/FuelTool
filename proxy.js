@@ -25,12 +25,11 @@ exports.getLastCharges = function(callback){
       queryParams: {}
   };
 
-  let now = new Date();
   let dateFrom = new Date();
   dateFrom.setMonth(dateFrom.getMonth() -2);
   var body = {
-      dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
-      dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
+      car: "polo",
+      date: dateFrom.getTime()
   };
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
@@ -56,8 +55,7 @@ exports.saveFuelCharge = function(callback, params){
   };
 
   let now = new Date();
-  let dateCharge = 
-  
+  console.log("params", params);
   var body = {
       dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
       dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])

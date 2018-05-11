@@ -19,7 +19,7 @@ app.get('/charge/all', (req, res) => {
 });
 
 app.get('/charge/add', (req, res) => {
-  proxy.saveFuelCharge(function(charge, req.params) {
+  proxy.saveFuelCharge(function(charge, params) {
     res.send(charge);
     console.log('The promise was fulfilled with charge!');
   }, function(err) {

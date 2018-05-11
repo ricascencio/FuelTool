@@ -30,3 +30,8 @@
   height: 25px;
   font-weight: bold;
 }
+
+.CalendarDiv {
+  border-radius: 5px;
+  border: 2px solid #0bc934;
+}

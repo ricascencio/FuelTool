@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Actions from '../components/Actions';
 import LogChargeForm from '../components/LogChargeForm'
 import Charges from '../components/Charges'
 
@@ -13,6 +12,10 @@ class App extends Component {
     action: "LogChargeForm"
   }
 
+  handleClickAction(newAction){
+      this.setState({action: newAction});
+  }
+
   render() {
     return (
       <div className="App">
@@ -21,10 +24,11 @@ class App extends Component {
         </header>
         <div>
           <div className="Actions">
-            <div className="ActionItem"><span>Log</span></div>
-            <div className="ActionItem"><span>Charges</span></div>
+            <div className="ActionItem" onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
+            <div className="ActionItem" onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
           </div>
-          
+            <LogChargeForm visible={this.state.action === "Log"}/>
+            <Charges visible={this.state.action === "Charges"}/>
         </div>
       </div>
     );
