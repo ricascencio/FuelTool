@@ -3,18 +3,17 @@ const config = require('config');
 
 var apigClientFactory = require('aws-api-gateway-client').default;
 
-const apigClientFactoryConfig = {
-    invokeUrl : process.env.ENDPOINT || config.get('ENDPOINT'),
-    accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
-    secretKey : process.env.SECRET_KEY || config.get('SECRET_KEY'),
-    region: process.env.REGION || config.get('REGION'),
-    apiKey : process.env.API_KEY || config.get('API_KEY'),
-  }
-
 const month = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
 
 exports.getLastCharges = function(callback){
+  const apigClientFactoryConfig = {
+      invokeUrl : process.env.GETLASTCHARGES_ENDPOINT || config.get('GETLASTCHARGES_ENDPOINT'),
+      accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
+      secretKey : process.env.SECRET_KEY || config.get('SECRET_KEY'),
+      region: process.env.REGION || config.get('REGION'),
+      apiKey : process.env.API_KEY || config.get('API_KEY'),
+    }
+  var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
   var params = {};
   // Template syntax follows url-template https://www.npmjs.com/package/url-template
   var pathTemplate = '/dev/charges/'
@@ -44,6 +43,13 @@ exports.getLastCharges = function(callback){
 }
 
 exports.saveFuelCharge = function(callback, params){
+  invokeUrl : process.env.GETLASTCHARGES_ENDPOINT || config.get('SAVEFUELCHARGE_ENDPOINT'),
+  accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
+  secretKey : process.env.SECRET_KEY || config.get('SECRET_KEY'),
+  region: process.env.REGION || config.get('REGION'),
+  apiKey : process.env.API_KEY || config.get('API_KEY'),
+}
+var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
   var params = {};
   // Template syntax follows url-template https://www.npmjs.com/package/url-template
   var pathTemplate = '/dev/saveFuelCharge/'
