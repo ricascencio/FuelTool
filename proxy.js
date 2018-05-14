@@ -43,13 +43,14 @@ exports.getLastCharges = function(callback){
 }
 
 exports.saveFuelCharge = function(callback, params){
-  invokeUrl : process.env.GETLASTCHARGES_ENDPOINT || config.get('SAVEFUELCHARGE_ENDPOINT'),
-  accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
-  secretKey : process.env.SECRET_KEY || config.get('SECRET_KEY'),
-  region: process.env.REGION || config.get('REGION'),
-  apiKey : process.env.API_KEY || config.get('API_KEY'),
-}
-var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
+  const apigClientFactoryConfig = {
+    invokeUrl : process.env.SAVEFUELCHARGE_ENDPOINT || config.get('SAVEFUELCHARGE_ENDPOINT'),
+    accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
+    secretKey : process.env.SECRET_KEY || config.get('SECRET_KEY'),
+    region: process.env.REGION || config.get('REGION'),
+    apiKey : process.env.API_KEY || config.get('API_KEY'),
+  }
+  var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
   var params = {};
   // Template syntax follows url-template https://www.npmjs.com/package/url-template
   var pathTemplate = '/dev/saveFuelCharge/'
