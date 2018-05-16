@@ -42,7 +42,7 @@ exports.getLastCharges = function(callback){
   });
 }
 
-exports.saveFuelCharge = function(callback, params){
+exports.saveFuelCharge = function(callback, req){
   const apigClientFactoryConfig = {
     invokeUrl : process.env.SAVEFUELCHARGE_ENDPOINT || config.get('SAVEFUELCHARGE_ENDPOINT'),
     accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),
@@ -62,19 +62,19 @@ exports.saveFuelCharge = function(callback, params){
   };
 
   let now = new Date();
-  console.log("params", params);
-  var body = {
-      dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
-      dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
-  };
-
-  apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
-  .then(function(result){
-    console.log('resultTTT', result.data);
-    callback(result.data);
-  }).catch( function(result){
-   console.log('CATCH', result);
-      //This is where you would put an error callback
-      return result;
-  });
+  console.log("REQ", req);
+  // var body = {
+  //     dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
+  //     dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
+  // };
+return "OK";
+  // apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
+  // .then(function(result){
+  //   console.log('resultTTT', result.data);
+  //   callback(result.data);
+  // }).catch( function(result){
+  //  console.log('CATCH', result);
+  //     //This is where you would put an error callback
+  //     return result;
+  // });
 }

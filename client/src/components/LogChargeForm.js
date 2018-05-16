@@ -12,9 +12,22 @@ class LogChargeForm extends Component {
   }
 
   submitHandler(event) {
-    console.log('kms', this.state.kms);
-    console.log('lts', this.state.lts);
-    console.log('car', this.state.car);
+    event.preventDefault();
+    //var chargeFuel = {car:this.state.car, kms:this.state.kms};
+
+    fetch('/charge/add',{
+      method: 'POST',
+      body:JSON.stringify({
+        car: "this.state.car",
+        kms: "this.state.kms"
+      }),
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(function(response){
+      return response.json()
+    }).then(function(body){
+      console.log(body);
+    })
   }
 
   changeHandler = (event) => {
@@ -24,30 +37,29 @@ class LogChargeForm extends Component {
     this.setState(
       {[name]: value}
     );
-    console.log('kms', this.state.kms);
-    console.log('lts', this.state.lts);
   }
+
+  changeDate = date => this.setState({date})
 
   render () {
     if(this.props.visible){
       return (
-        <form onSubmit={this.submitHandler} action="charge/add">
+        <form onSubmit={this.submitHandler.bind(this)}>
           <div>
-            <div className="Column Label">Kms &nbsp;</div><div className="Column Field"><input name="kms" type="text" size="5" value={this.state.kms} onChange={(event) => this.changeHandler(event)}/></div><br/><br/>
-            <div className="Column Label">Lts &nbsp;</div><div className="Column Field"><input name="lts" type="text" size="5" value={this.state.lts} onChange={(event) => this.changeHandler(event)} /></div><br/><br/>
-            <div className="Column Label">Date &nbsp;</div>
-            <div className="Column Field">
-              <Calendar
-                onChange={(event) => this.changeHandler(event)}
-                name="date"
-                value={this.state.date}/>
-            </div><br/><br/>
             <div className="Column Label">Car &nbsp;</div>
             <div className="Column Field">
               <select name="car" value={this.state.car} onChange={(event) => this.changeHandler(event)}>
                 <option value="Polo">Polo</option>
                 <option value="Versa">Versa</option>
               </select>
+            </div><br/><br/>
+            <div className="Column Label">Kms &nbsp;</div><div className="Column Field"><input name="kms" type="text" size="5" value={this.state.kms} onChange={(event) => this.changeHandler(event)}/></div><br/><br/>
+            <div className="Column Label">Lts &nbsp;</div><div className="Column Field"><input name="lts" type="text" size="5" value={this.state.lts} onChange={(event) => this.changeHandler(event)} /></div><br/><br/>
+            <div className="Column Label">Date &nbsp;</div>
+            <div className="Column Field">
+              <Calendar
+                onChange={this.changeDate}
+                value={this.state.date}/>
             </div><br/><br/>
             <input className="SaveButton" type="submit" value="Save"/>
           </div>

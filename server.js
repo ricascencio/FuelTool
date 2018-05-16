@@ -18,8 +18,9 @@ app.get('/charge/all', (req, res) => {
   });
 });
 
-app.get('/charge/add', (req, res) => {
-  proxy.saveFuelCharge(function(charge, params) {
+app.post('/charge/add', (req, res) => {
+  //console.log("body", req);
+  proxy.saveFuelCharge(function(charge, req) {
     res.send(charge);
     console.log('The promise was fulfilled with charge!');
   }, function(err) {

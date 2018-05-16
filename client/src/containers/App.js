@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    action: "LogChargeForm"
+    action: "Log"
   }
 
   handleClickAction(newAction){
