@@ -1,5 +1,6 @@
 const express = require('express');
 const config = require('config');
+const bodyParser = require('body-parser');
 const proxy = require('./proxy');
 
 const app = express();
@@ -8,6 +9,11 @@ const port = process.env.PORT || 5000;
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended:true
+}));
 
 app.get('/charge/all', (req, res) => {
   proxy.getLastCharges(function(charges) {
@@ -19,8 +25,7 @@ app.get('/charge/all', (req, res) => {
 });
 
 app.post('/charge/add', (req, res) => {
-  //console.log("body", req);
-  proxy.saveFuelCharge(function(charge, req) {
+  proxy.saveFuelCharge(req.body, function(charge) {
     res.send(charge);
     console.log('The promise was fulfilled with charge!');
   }, function(err) {

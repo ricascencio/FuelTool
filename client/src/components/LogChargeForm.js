@@ -7,27 +7,35 @@ class LogChargeForm extends Component {
   state = {
     kms: '',
     lts: '',
-    car: '',
+    car: 'polo',
     date: new Date()
   }
 
   submitHandler(event) {
     event.preventDefault();
-    //var chargeFuel = {car:this.state.car, kms:this.state.kms};
+    let car = this.state.car;
+    let kms = this.state.kms;
+    let lts = this.state.lts;
+    let date = this.state.date;
 
-    fetch('/charge/add',{
-      method: 'POST',
-      body:JSON.stringify({
-        car: "this.state.car",
-        kms: "this.state.kms"
-      }),
-      headers: {"Content-Type": "application/json"}
-    })
-    .then(function(response){
-      return response.json()
-    }).then(function(body){
-      console.log(body);
-    })
+    if(car && kms && lts && date){
+      fetch('/charge/add',{
+        method: 'POST',
+        body:JSON.stringify({
+          car: car,
+          kms: kms,
+          lts: lts,
+          chargeDate: date,
+          createDate: new Date()
+        }),
+        headers: {"Content-Type": "application/json"}
+      })
+      .then(function(response){
+        return response//.json()
+      }).then(function(body){
+        console.log(body);
+      })
+    }
   }
 
   changeHandler = (event) => {
