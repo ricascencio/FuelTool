@@ -25,7 +25,7 @@ exports.getLastCharges = function(callback){
   };
 
   let dateFrom = new Date();
-  dateFrom.setMonth(dateFrom.getMonth() -2);
+  dateFrom.setMonth(dateFrom.getMonth() - 3);
   var body = {
       car: "polo",
       date: dateFrom.getTime()
@@ -33,8 +33,8 @@ exports.getLastCharges = function(callback){
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
   .then(function(result){
-    console.log('resultTTT', result.data);
-    callback(result.data);
+    console.log('AWS.getLastCharges', result.Items);
+    callback(result.Items);
   }).catch( function(result){
    console.log('CATCH', result);
       //This is where you would put an error callback
@@ -56,24 +56,18 @@ exports.saveFuelCharge = function(req, callback){
   var pathTemplate = '/dev/saveFuelCharge/'
   var method = 'POST';
   var additionalParams = {
-      //If there are any unmodeled query parameters or headers that need to be sent with the request you can add them here
       headers: {},
       queryParams: {}
   };
 
   let now = new Date();
 
-  // var body = {
-  //     dateTo: now.getFullYear() + '-' + (month[now.getMonth()]),
-  //     dateFrom: dateFrom.getFullYear() + '-' + (month[dateFrom.getMonth()])
-  // };
-
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, req)
   .then(function(result){
-    callback(result.data);
+    console.log('AWS.saveFuelCharge', result);
+    callback(result);
   }).catch( function(result){
    console.log('CATCH', result);
-      //This is where you would put an error callback
       return result;
   });
 }
