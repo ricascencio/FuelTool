@@ -4,8 +4,7 @@ import './Charges.css'
 class Charges extends Component {
   state = {
     charges:[
-      {"car": "polo", "charge_formated_date":"2018-03-14", "kms":234, "lts":40, "performance":12},
-      {"car": "polo", "charge_formated_date":"2018-03-01", "kms":410, "lts":40, "performance":11.5}
+
     ]
   };
 
