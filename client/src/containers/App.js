@@ -24,8 +24,8 @@ class App extends Component {
         </header>
         <div>
           <div className="Actions">
-            <div className="ActionItem" onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
-            <div className="ActionItem" onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
+            <div className={(this.state.action === 'Log'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
+            <div className={(this.state.action === 'Charges'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
           </div>
             <LogChargeForm visible={this.state.action === "Log"}/>
             <Charges visible={this.state.action === "Charges"}/>

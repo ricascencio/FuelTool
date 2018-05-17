@@ -42,7 +42,7 @@ exports.getLastCharges = function(callback){
   });
 }
 
-exports.saveFuelCharge = function(req){
+exports.saveFuelCharge = function(req, callback){
   const apigClientFactoryConfig = {
     invokeUrl : process.env.SAVEFUELCHARGE_ENDPOINT || config.get('SAVEFUELCHARGE_ENDPOINT'),
     accessKey : process.env.ACCESS_KEY || config.get('ACCESS_KEY'),

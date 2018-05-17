@@ -1,14 +1,18 @@
-table { 
+table {
  border-spacing: 1px;
  border-collapse: separate;
  background: #44659b;
 }
 
-td { 
+.tdOne {
     padding: 10px;
-    background:#f2f4f7;
+    background:#c3e7ae;
 }
-th { 
+.tdTwo {
     padding: 10px;
-    background:#ced9ea;
+    background:#e0f2d6;
+}
+th {
+    padding: 10px;
+    background:#a4badb;
 }

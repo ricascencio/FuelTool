@@ -20,10 +20,31 @@
 
 .Field Input {
   text-align: right;
+  border: 1px solid #9c9c9c;
+  border-radius: 3px;
+}
+
+.Field select {
+  text-align: right;
+  border: 1px solid #9c9c9c;
+  border-radius: 3px;
 }
 
 .SaveButton {
   background-color: #4389ff;
+  color:white;
+  border: none;
+  width: 50px;
+  height: 25px;
+  font-weight: bold;
+}
+
+.SaveButton:active {vertical-align: top;
+    padding: 4px 7px 3px;
+  }
+
+.SaveButton:hover {
+  background-color: #b5d0ff;
   color:white;
   border: none;
   width: 50px;

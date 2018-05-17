@@ -19,8 +19,15 @@
     font-weight: bold;
     vertical-align: middle;
     display: inline-block;
-
   }
+
+	.ActionItem:visited {
+		color: #bfc9b9;
+	}
+
+	.ActionItem:active {
+		color: red;
+	}
 
   div span{
     color: #DF612B;

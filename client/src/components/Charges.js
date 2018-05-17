@@ -4,7 +4,8 @@ import './Charges.css'
 class Charges extends Component {
   state = {
     charges:[
-      {"car": "polo", "charge_formated_date":"2018-03-14", "kms":234, "lts":40, "performance":12}
+      {"car": "polo", "charge_formated_date":"2018-03-14", "kms":234, "lts":40, "performance":12},
+      {"car": "polo", "charge_formated_date":"2018-03-01", "kms":410, "lts":40, "performance":11.5}
     ]
   };
 
@@ -28,6 +29,8 @@ class Charges extends Component {
 
   render() {
     if(this.props.visible){
+      let style = '';
+      let odd = true;
       return <table align="center">
           <thead>
             <tr>
@@ -38,18 +41,23 @@ class Charges extends Component {
               <th>PERFORMANCE</th>
             </tr>
           </thead>
-          {this.state.charges.map((charge, index) => {
-              return <tbody>
-                <tr>
-                  <td>{charge.car}</td>
-                  <td>{charge.charge_formated_date}</td>
-                  <td>{charge.kms}</td>
-                  <td>{charge.lts}</td>
-                  <td>{charge.performance}</td>
+          <tbody>
+          {
+            this.state.charges.map((charge, index) => {
+              style = [];
+              if(odd) style = 'tdOne';
+              else style = 'tdTwo';
+              odd = !odd;
+              return <tr key={index}>
+                  <td className={style}>{charge.car}</td>
+                  <td className={style}>{charge.charge_formated_date}</td>
+                  <td className={style}>{charge.kms}</td>
+                  <td className={style}>{charge.lts}</td>
+                  <td className={style}>{charge.performance}</td>
                 </tr>
-              </tbody>
             })
           }
+          </tbody>
         </table>
     }else{
       return ""
