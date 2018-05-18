@@ -11,14 +11,13 @@ class Charges extends Component {
   componentWillMount() {
     //if(this.props.visible){
       this.callApi()
-      .then(res => this.setState({ charges: JSON.stringify(res)}))
+      .then(res => this.setState({ charges: res.Items}))
       .catch(err => console.log(err));
     //}
   }
 
   callApi = async () => {
     const response = await fetch('/charge/all');
-    console.log("CALL API");
     const body = await response.json();
 
     if (response.status !== 200)
