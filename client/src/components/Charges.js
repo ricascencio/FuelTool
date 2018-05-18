@@ -11,7 +11,7 @@ class Charges extends Component {
   componentWillMount() {
     //if(this.props.visible){
       this.callApi()
-      .then(res => this.setState({ charges: res}))
+      .then(res => this.setState({ charges: JSON.stringify(res)}))
       .catch(err => console.log(err));
     //}
   }
