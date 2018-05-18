@@ -58,9 +58,7 @@ exports.saveFuelCharge = function(req, callback){
   var additionalParams = {
       headers: {},
       queryParams: {}
-  };
-
-  let now = new Date();
+  };  
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, req)
   .then(function(result){

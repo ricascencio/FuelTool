@@ -8,7 +8,8 @@ class LogChargeForm extends Component {
     kms: '',
     lts: '',
     car: 'polo',
-    date: new Date()
+    date: new Date(),
+    responseMessage: ''
   }
 
   submitHandler(event) {
@@ -30,10 +31,8 @@ class LogChargeForm extends Component {
         }),
         headers: {"Content-Type": "application/json"}
       })
-      .then(function(response){
-        return response//.json()
-      }).then(function(body){
-        console.log(body);
+      .then(res => {
+        this.setState({responseMessage: res})
       })
     }
   }
@@ -57,8 +56,8 @@ class LogChargeForm extends Component {
             <div className="Column Label">Car &nbsp;</div>
             <div className="Column Field">
               <select name="car" value={this.state.car} onChange={(event) => this.changeHandler(event)}>
-                <option value="Polo">Polo</option>
-                <option value="Versa">Versa</option>
+                <option value="polo">Polo</option>
+                <option value="versa">Versa</option>
               </select>
             </div><br/><br/>
             <div className="Column Label">Kms &nbsp;</div><div className="Column Field"><input name="kms" type="text" size="5" value={this.state.kms} onChange={(event) => this.changeHandler(event)}/></div><br/><br/>
@@ -69,8 +68,9 @@ class LogChargeForm extends Component {
                 onChange={this.changeDate}
                 value={this.state.date}/>
             </div><br/><br/>
-            <input className="SaveButton" type="submit" value="Save"/>
+            <input className="SaveButton" type="submit" value="Save"/><br/><br/>
           </div>
+          <center>{this.state.responseMessage}</center>
         </form>
       )
     }else {

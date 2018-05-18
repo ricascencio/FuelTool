@@ -9,11 +9,11 @@ class Charges extends Component {
   };
 
   componentWillMount() {
-    //if(this.props.visible){
+    if(this.props.visible){
       this.callApi()
       .then(res => this.setState({ charges: res.Items}))
       .catch(err => console.log(err));
-    //}
+    }
   }
 
   callApi = async () => {
@@ -37,7 +37,7 @@ class Charges extends Component {
               <th>DATE</th>
               <th>KMS</th>
               <th>LTS</th>
-              <th>PERFORMANCE</th>
+              <th>KMS/L</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,7 @@ class Charges extends Component {
               odd = !odd;
               return <tr key={index}>
                   <td className={style}>{charge.car}</td>
-                  <td className={style}>{charge.charge_formated_date}</td>
+                  <td className={style}>{charge.charge_formated_date.substring(0, 10)}</td>
                   <td className={style}>{charge.kms}</td>
                   <td className={style}>{charge.lts}</td>
                   <td className={style}>{charge.performance}</td>
