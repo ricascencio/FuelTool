@@ -9,6 +9,7 @@ class Charges extends Component {
   };
 
   componentDidMount() {
+    console.log("this.props.visible " + this.props.visible);
     if(this.props.visible){
       this.callApi()
       .then(res => this.setState({ charges: res.Items}))
