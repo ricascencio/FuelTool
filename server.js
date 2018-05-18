@@ -15,8 +15,7 @@ app.use(bodyParser.urlencoded({
   extended:true
 }));
 
-app.get('/charge/all', (req, res) => {
-  console.log("server.js");
+app.get('/charge/all', (req, res) => {  
   proxy.getLastCharges(function(charges) {
     res.send(charges);
     console.log('The promise was fulfilled with charges!');
