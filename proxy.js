@@ -33,8 +33,8 @@ exports.getLastCharges = function(callback){
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, body)
   .then(function(result){
-    console.log('AWS.getLastCharges', result.Items);
-    callback(result.Items);
+    console.log('AWS.getLastCharges', result);
+    callback(result);
   }).catch( function(result){
    console.log('CATCH', result);
       //This is where you would put an error callback
