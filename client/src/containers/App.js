@@ -10,19 +10,21 @@ class App extends Component {
 
   state = {
     action: "Log",
-    actionItem: [<LogChargeForm/>]
+    actionItem: [
+      <div><LogChargeForm/></div>
+    ]
   }
 
   handleClickAction(newAction){
     let actionItem = [];
     if(newAction === "Log")
-      actionItem.push(<LogChargeForm/>);
+      actionItem.push(<div><LogChargeForm/></div>);
     else
-      actionItem.push(<Charges/>);
-    this.setState(
+      actionItem.push(<div><Charges/></div>);
+    this.setState([
       {action: newAction},
       {actionItem: actionItem}
-    );
+    ]);
   }
 
   render() {
@@ -36,7 +38,7 @@ class App extends Component {
             <div className={(this.state.action === 'Log'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
             <div className={(this.state.action === 'Charges'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
           </div>
-            {this.state.acionItem}
+        {this.state.actionItem}
         </div>
       </div>
     );
