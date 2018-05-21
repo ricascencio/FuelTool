@@ -34,10 +34,10 @@ class LogChargeForm extends Component {
       .then(function(response){
         console.log("RESPONSE " + response);
         return response
-      }).then(body){
+      }).then(function (body){
         console.log("BODY " + body);
         return body;
-      }
+      });
     }
   }
 
