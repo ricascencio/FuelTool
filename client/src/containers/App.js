@@ -9,11 +9,19 @@ import './App.css';
 class App extends Component {
 
   state = {
-    action: "Log"
+    action: "Log",
+    actionItem: [
+
+    ]
   }
 
   handleClickAction(newAction){
-      this.setState({action: newAction});
+    let actionItem = [];
+    if(newAction === "Log")
+      actionItem.push(<LogChargeForm/>);
+    else
+      actionItem.push(<Charges/>);
+    this.setState({action: newAction});
   }
 
   render() {
@@ -27,8 +35,7 @@ class App extends Component {
             <div className={(this.state.action === 'Log'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
             <div className={(this.state.action === 'Charges'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
           </div>
-            <LogChargeForm visible={this.state.action === "Log"}/>
-            <Charges visible={this.state.action === "Charges"}/>
+            {acionItem}
         </div>
       </div>
     );
