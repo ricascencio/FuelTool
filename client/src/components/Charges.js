@@ -8,23 +8,9 @@ class Charges extends Component {
   };
 
   componentDidMount() {
-    console.log("componentDidMount " + this.props.visible);
       this.callApi()
       .then(res => this.setState({ charges: res.Items}))
       .catch(err => console.log(err));
-  }
-
-  componentWillMount() {
-    console.log("componentWillMount " + this.props.visible);
-    // if(this.props.visible){
-    //   this.callApi()
-    //   .then(res => this.setState({ charges: res.Items}))
-    //   .catch(err => console.log(err));
-    // }
-  }
-
-  componentWillReceiveProps(){
-    console.log("componentWillReceiveProps" + this.props.visible);
   }
 
   callApi = async () => {
