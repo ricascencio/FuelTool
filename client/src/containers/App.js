@@ -10,9 +10,7 @@ class App extends Component {
 
   state = {
     action: "Log",
-    actionItem: [
-
-    ]
+    actionItem: [<LogChargeForm/>]
   }
 
   handleClickAction(newAction){
