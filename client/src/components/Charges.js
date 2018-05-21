@@ -4,7 +4,36 @@ import './Charges.css'
 class Charges extends Component {
   state = {
     charges:[
-
+      {
+        "car": "polo",
+        "charge_date": 1507253240003,
+        "charge_formated_date": "2017-10-06T01:27:20.003Z",
+        "create_date": "2017-10-06T01:27:20.003Z",
+        "days": 9,
+        "kms": 471,
+        "lts": 38,
+        "performance": 12.39
+      },
+      {
+        "car": "polo",
+        "charge_date": 1515887306523,
+        "charge_formated_date": "2018-01-13T23:48:26.523Z",
+        "create_date": "2018-01-13T23:48:26.523Z",
+        "days": 25,
+        "kms": 513,
+        "lts": 39,
+        "performance": 13.15
+      },
+      {
+        "car": "polo",
+        "charge_date": 1506554706078,
+        "charge_formated_date": "2017-09-27T23:25:06.078Z",
+        "create_date": "2017-09-27T23:25:06.078Z",
+        "days": 12,
+        "kms": 458,
+        "lts": 38,
+        "performance": 12.05
+      }
     ]
   };
 

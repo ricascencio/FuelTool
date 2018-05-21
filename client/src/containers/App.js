@@ -11,20 +11,19 @@ class App extends Component {
   state = {
     action: "Log",
     actionItem: [
-      <div><LogChargeForm/></div>
+      <div key="1"><LogChargeForm/></div>
     ]
   }
 
   handleClickAction(newAction){
-    let actionItem = [];
+    let actionItem;
     if(newAction === "Log")
-      actionItem.push(<div><LogChargeForm/></div>);
+      actionItem = [<div key="1"><LogChargeForm/></div>];
     else
-      actionItem.push(<div><Charges/></div>);
-    this.setState([
-      {action: newAction},
-      {actionItem: actionItem}
-    ]);
+      actionItem = [<div key="2"><Charges/></div>];
+    this.setState(
+      {action: newAction ,actionItem: actionItem}
+    );
   }
 
   render() {
