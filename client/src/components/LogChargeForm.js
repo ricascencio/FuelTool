@@ -53,7 +53,6 @@ class LogChargeForm extends Component {
   changeDate = date => this.setState({date})
 
   render () {
-    if(this.props.visible){
       return (
         <form onSubmit={this.submitHandler.bind(this)}>
           <div>
@@ -77,10 +76,6 @@ class LogChargeForm extends Component {
           <center>{this.state.responseMessage}</center>
         </form>
       )
-    }else {
-      return ""
-    }
-
   };
 
 }

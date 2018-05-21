@@ -35,7 +35,7 @@ class App extends Component {
             <div className={(this.state.action === 'Log'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Log", event)}><span>Log</span></div>
             <div className={(this.state.action === 'Charges'?'ActionItemSelected':'ActionItem')} onClick={(event) => this.handleClickAction("Charges", event)}><span>Charges</span></div>
           </div>
-            {acionItem}
+            {this.state.acionItem}
         </div>
       </div>
     );

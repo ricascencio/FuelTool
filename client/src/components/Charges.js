@@ -41,7 +41,6 @@ class Charges extends Component {
   }
 
   render() {
-    if(this.props.visible){
       let style = '';
       let odd = true;
       return <table align="center">
@@ -72,11 +71,6 @@ class Charges extends Component {
           }
           </tbody>
         </table>
-    }else{
-      return ""
-    }
-
-
   };
 }
 
