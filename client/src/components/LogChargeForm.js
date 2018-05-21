@@ -32,9 +32,12 @@ class LogChargeForm extends Component {
         headers: {"Content-Type": "application/json"}
       })
       .then(function(response){
-        console.log(response);
-        return response.json()
-      })
+        console.log("RESPONSE " + response);
+        return response
+      }).then(body){
+        console.log("BODY " + body);
+        return body;
+      }
     }
   }
 
