@@ -21,7 +21,10 @@ class App extends Component {
       actionItem.push(<LogChargeForm/>);
     else
       actionItem.push(<Charges/>);
-    this.setState({action: newAction});
+    this.setState(
+      {action: newAction},
+      {actionItem: actionItem}
+    );
   }
 
   render() {
