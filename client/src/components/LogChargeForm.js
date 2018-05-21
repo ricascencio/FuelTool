@@ -35,7 +35,7 @@ class LogChargeForm extends Component {
         console.log("RESPONSE " + response);
         return response
       }).then(function (body){
-        console.log("BODY " + body);
+        this.setState({ responseMessage: body});
         return body;
       });
     }
