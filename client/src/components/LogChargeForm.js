@@ -14,7 +14,6 @@ class LogChargeForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log("submitHandler");
     let car = this.state.car;
     let kms = this.state.kms;
     let lts = this.state.lts;
@@ -29,7 +28,7 @@ class LogChargeForm extends Component {
         createDate: new Date()
       });
       this.callApi(bodyRequest)
-      .then(res => this.setState({ responseMessage: res}))
+      .then(res => this.setState({ responseMessage: res.message}))
       .catch(err => console.log(err));
     }
   }
@@ -45,7 +44,7 @@ class LogChargeForm extends Component {
     if (response.status !== 200)
       throw Error(body.message);
     console.log("BODY CALLAPI " + body.message);
-    return body.message;
+    return body;
   }
 
 
