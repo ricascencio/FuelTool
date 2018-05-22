@@ -34,10 +34,6 @@ class LogChargeForm extends Component {
     }
   }
 
-
-
-
-
   callApi = async (bodyRequest) => {
     const response = await fetch('/charge/add',{
       method: 'POST',
