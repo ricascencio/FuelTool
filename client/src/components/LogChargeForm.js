@@ -31,6 +31,16 @@ class LogChargeForm extends Component {
       .then(res => this.setState({ responseMessage: res.message}))
       .catch(err => console.log(err));
     }
+
+    this.setState(
+      {
+        kms: '',
+        lts: '',
+        car: 'polo',
+        date: new Date(),
+        responseMessage: ''
+      }
+    )
   }
 
   callApi = async (bodyRequest) => {
@@ -43,7 +53,6 @@ class LogChargeForm extends Component {
 
     if (response.status !== 200)
       throw Error(body.message);
-    console.log("BODY CALLAPI " + body.message);
     return body;
   }
 

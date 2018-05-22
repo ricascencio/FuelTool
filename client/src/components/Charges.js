@@ -31,9 +31,10 @@ class Charges extends Component {
             <tr>
               <th>CAR</th>
               <th>DATE</th>
+              <th>KMS/L</th>
               <th>KMS</th>
               <th>LTS</th>
-              <th>KMS/L</th>
+              <th>DAYS</th>
             </tr>
           </thead>
           <tbody>
@@ -46,9 +47,10 @@ class Charges extends Component {
               return <tr key={index}>
                   <td className={style}>{charge.car}</td>
                   <td className={style}>{charge.charge_formated_date.substring(0, 10)}</td>
+                  <td className={style}>{charge.performance}</td>
                   <td className={style}>{charge.kms}</td>
                   <td className={style}>{charge.lts}</td>
-                  <td className={style}>{charge.performance}</td>
+                  <td className={style}>{charge.days}</td>
                 </tr>
             })
           }

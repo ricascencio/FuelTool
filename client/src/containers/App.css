@@ -46,10 +46,10 @@
   }
 
   .ActionItemSelected {
-      background: #eaeaea;
+      background: #cecdcd;
       margin: 7px;
       border-radius: 5px;
-      border: 2px solid #eaeaea;
+      border: 2px solid #cecdcd;
       box-shadow: 0 4px 6px #ccc;
       padding: 10px;
       width:75px;
