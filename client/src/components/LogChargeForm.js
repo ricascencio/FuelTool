@@ -12,8 +12,9 @@ class LogChargeForm extends Component {
     responseMessage: ''
   }
 
-  submitHandler(event) {
+  submitHandler = (event) => {
     event.preventDefault();
+    console.log("submitHandler");
     let car = this.state.car;
     let kms = this.state.kms;
     let lts = this.state.lts;
@@ -31,11 +32,11 @@ class LogChargeForm extends Component {
         }),
         headers: {"Content-Type": "application/json"}
       })
-      .then(function(response){
-        console.log("RESPONSE " + response);
+      .then( response => {
+        console.log("RESPONSE " + response.body);
         return response
-      }).then(function (body){
-        this.setState({ responseMessage: body});
+      }).then( body => {
+        this.setState({ responseMessage: "body"});
         return body;
       });
     }
@@ -54,7 +55,7 @@ class LogChargeForm extends Component {
 
   render () {
       return (
-        <form onSubmit={this.submitHandler.bind(this)}>
+        <form name="form">
           <div>
             <div className="Column Label">Car &nbsp;</div>
             <div className="Column Field">
@@ -71,9 +72,9 @@ class LogChargeForm extends Component {
                 onChange={this.changeDate}
                 value={this.state.date}/>
             </div><br/><br/>
-            <input className="SaveButton" type="submit" value="Save"/><br/><br/>
+            <input className="SaveButton" type="button" value="Save" onClick={(event) => this.submitHandler(event)}/><br/><br/>
           </div>
-          <center>{this.state.responseMessage}</center>
+          {this.state.responseMessage}
         </form>
       )
   };
