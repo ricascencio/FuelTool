@@ -62,8 +62,8 @@ exports.saveFuelCharge = function(req, callback){
 
   apigClient.invokeApi(params, pathTemplate, method, additionalParams, req)
   .then(function(result){
-    console.log('AWS.saveFuelCharge', result);
-    callback(result);
+    console.log('AWS.saveFuelCharge', result.data);
+    callback(result.data);
   }).catch( function(result){
    console.log('CATCH', result);
       return result;
