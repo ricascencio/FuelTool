@@ -89,7 +89,7 @@ class LogChargeForm extends Component {
             </div><br/><br/>
             <input className="SaveButton" type="button" value="Save" onClick={(event) => this.submitHandler(event)}/><br/><br/>
           </div>
-          {this.state.responseMessage}
+          <p className="ResponseMessage">{this.state.responseMessage}</p>
         </form>
       )
   };
