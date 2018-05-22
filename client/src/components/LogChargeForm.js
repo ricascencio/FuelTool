@@ -21,26 +21,37 @@ class LogChargeForm extends Component {
     let date = this.state.date;
 
     if(car && kms && lts && date){
-      fetch('/charge/add',{
-        method: 'POST',
-        body:JSON.stringify({
-          car: car,
-          kms: kms,
-          lts: lts,
-          chargeDate: date,
-          createDate: new Date()
-        }),
-        headers: {"Content-Type": "application/json"}
-      })
-      .then( response => {
-        console.log("RESPONSE " + response.body);
-        return response
-      }).then( body => {
-        this.setState({ responseMessage: "body"});
-        return body;
+      const bodyRequest = JSON.stringify({
+        car: car,
+        kms: kms,
+        lts: lts,
+        chargeDate: date,
+        createDate: new Date()
       });
+      this.callApi(bodyRequest)
+      .then(res => this.setState({ responseMessage: res}))
+      .catch(err => console.log(err));
     }
   }
+
+
+
+
+
+  callApi = async (bodyRequest) => {
+    const response = await fetch('/charge/add',{
+      method: 'POST',
+      body:bodyRequest,
+      headers: {"Content-Type": "application/json"}
+    });
+    const body = await response.json();
+
+    if (response.status !== 200)
+      throw Error(body.message);
+    console.log("BODY CALLAPI " + body.message);
+    return body.message;
+  }
+
 
   changeHandler = (event) => {
     const target = event.target;

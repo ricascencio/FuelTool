@@ -50,23 +50,22 @@ exports.saveFuelCharge = function(req, callback){
     region: process.env.REGION || config.get('REGION'),
     apiKey : process.env.API_KEY || config.get('API_KEY'),
   }
-  // var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
-  // var params = {};
-  // // Template syntax follows url-template https://www.npmjs.com/package/url-template
-  // var pathTemplate = '/dev/saveFuelCharge/'
-  // var method = 'POST';
-  // var additionalParams = {
-  //     headers: {},
-  //     queryParams: {}
-  // };  
+  var apigClient = apigClientFactory.newClient(apigClientFactoryConfig);
+  var params = {};
+  // Template syntax follows url-template https://www.npmjs.com/package/url-template
+  var pathTemplate = '/dev/saveFuelCharge/'
+  var method = 'POST';
+  var additionalParams = {
+      headers: {},
+      queryParams: {}
+  };
 
-  // apigClient.invokeApi(params, pathTemplate, method, additionalParams, req)
-  // .then(function(result){
-  //   console.log('AWS.saveFuelCharge', result.data);
-  //   callback(result.data);
-  // }).catch( function(result){
-  //  console.log('CATCH', result);
-  //     return result;
-  // });
-callback( "polo: 10.09 km/l.33 litros en 0 dias.");
+  apigClient.invokeApi(params, pathTemplate, method, additionalParams, req)
+  .then(function(result){
+    console.log('AWS.saveFuelCharge', result);
+    callback(result);
+  }).catch( function(result){
+   console.log('CATCH', result);
+      return result;
+  });
 }
