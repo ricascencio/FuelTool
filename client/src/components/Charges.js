@@ -26,7 +26,8 @@ class Charges extends Component {
   render() {
       let style = '';
       let odd = true;
-      return <table align="center">
+      let totalKms = 0;
+      return <div><table align="center">
           <thead>
             <tr>
               <th>CAR</th>
@@ -44,6 +45,7 @@ class Charges extends Component {
               if(odd) style = 'tdOne';
               else style = 'tdTwo';
               odd = !odd;
+              if(charge.total_kms) totalKms = charge.total_kms;
               return <tr key={index}>
                   <td className={style}>{charge.car}</td>
                   <td className={style}>{charge.charge_formated_date.substring(0, 10)}</td>
@@ -56,6 +58,7 @@ class Charges extends Component {
           }
           </tbody>
         </table>
+        <p className="kms">polo: {parseInt(totalKms).toLocaleString(navigator.language, {minimumFractionDigits : 0})} kms</p></div>
   };
 }
 

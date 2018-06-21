@@ -2,6 +2,7 @@ table {
  border-spacing: 1px;
  border-collapse: separate;
  background: #44659b;
+ font-size: 9px;
 }
 
 .tdOne {
@@ -15,4 +16,8 @@ table {
 th {
     padding: 8px;
     background:#a4badb;
+}
+.kms {
+	font-size: 10px;
+	color: #44659b;
 }
