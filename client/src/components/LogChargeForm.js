@@ -36,7 +36,6 @@ class LogChargeForm extends Component {
       {
         kms: '',
         lts: '',
-        car: 'polo',
         date: new Date(),
         responseMessage: ''
       }
